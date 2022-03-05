@@ -21,6 +21,36 @@ class UsersController < ApplicationController
         @entry = Entry.new
       end
     end
+    now = Time.current
+    #@today_books = @books.where(created_at: now.all_day).count
+    #@yesterday_books = @books.where(created_at: now.prev_day.all_day).count
+    #@this_week_books = @books.where(created_at: now.all_week).count
+    #@last_week_books = @books.where(created_at: now.prev_week.all_week).count
+    #if @yesterday_books == 0
+      #@ratio1 = 0
+    #else
+      #@ratio1 = @today_books/@yesterday_books.to_f
+    #end
+    #if @last_week_books == 0
+      #@ratio2 = 0
+    #else
+      #@ratio2 = @this_week_books/@last_week_books.to_f
+    #end
+    day1=now.prev_day
+    day2=day1.prev_day
+    day3=day2.prev_day
+    day4=day3.prev_day
+    day5=day4.prev_day
+    day6=day5.prev_day
+    @today_books=@books.where(created_at: now.all_day).count
+    @day1_books=@books.where(created_at: day1.all_day).count
+    @day2_books=@books.where(created_at: day2.all_day).count
+    @day3_books=@books.where(created_at: day3.all_day).count
+    @day4_books=@books.where(created_at: day4.all_day).count
+    @day5_books=@books.where(created_at: day5.all_day).count
+    @day6_books=@books.where(created_at: day6.all_day).count
+    @q=@user.books.ransack(params[:q])
+    @results= @q.result(distinct: true).order(created_at: "desc").count
   end
 
   def index

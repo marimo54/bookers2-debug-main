@@ -1,7 +1,9 @@
 {
   "name": "bookers2",
+  "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "chart.js": "^2.7.1",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",

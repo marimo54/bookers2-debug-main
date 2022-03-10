@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :groups do
     member do
       get :join
+      get :new_mail
+      post :send_mail
     end
   end
   resources :groupusers

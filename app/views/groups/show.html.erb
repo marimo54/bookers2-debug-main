@@ -36,6 +36,10 @@
           <% else %>
             <td><%= link_to "Join this group",join_group_path(@group.id),class: 'btn btn-sm btn-success' %></td>
           <% end %>
+
+          <% if @group.owner_id==current_user.id %>
+            <td><%=link_to "Notice an Event",new_mail_group_path(@group.id), class: 'btn btn-sm btn-info' %></td>
+          <% end %>
         </tr>
         </tbody>
       </table>
